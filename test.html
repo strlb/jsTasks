@@ -1,0 +1,206 @@
+﻿<html>
+<head>
+<title>Test unit</title>
+</head>
+<body>
+<h2>Задание 1</h4>
+<h4>На javascript (без использования каких-либо сторонних библиотек) сделать подсчёт в ячейках по заданным параметрам по клику на кнопке, результат вывести в блок.<br>После подсчёта кнопка должна стать недоступной.</h4>
+<p>Сумма в таблице с id &quot;test3&quot; ячейках по диагонали от первой слева: <span id="sum1">-</span></p>
+<p><button id="calc1">Посчитать</button></p>
+<p>Сумма в ячейках с id &quot;test3&quot; с классом &quot;clc&quot;: <span id="sum2">-</span></p>
+<p><button id="calc2">Посчитать</button></p>
+<table id="test3" cellpadding="5" cellspacing="0" border="1">
+<tbody>
+<tr>
+<td>0</td>
+<td>2</td>
+<td>3</td>
+<td class="clc">9</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>1</td>
+<td>7</td>
+<td class="clc">8</td>
+</tr>
+<tr>
+<td>4</td>
+<td>6</td>
+<td class="clc">1</td>
+<td>0</td>
+<td>2</td>
+<td class="clc">3</td>
+<td>8</td>
+<td>5</td>
+<td>9</td>
+<td>7</td>
+</tr>
+<tr>
+<td>3</td>
+<td>0</td>
+<td>2</td>
+<td>4</td>
+<td>9</td>
+<td>5</td>
+<td>6</td>
+<td class="clc">7</td>
+<td>8</td>
+<td>1</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td class="clc">6</td>
+<td>7</td>
+<td>8</td>
+<td>9</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td class="clc">2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>7</td>
+<td>8</td>
+<td>9</td>
+</tr>
+<tr>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>0</td>
+<td class="clc">4</td>
+<td>6</td>
+<td>7</td>
+<td>5</td>
+<td>8</td>
+<td>9</td>
+</tr>
+<tr>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>0</td>
+<td>6</td>
+<td class="clc">7</td>
+<td>8</td>
+<td>9</td>
+</tr>
+<tr>
+<td class="clc">0</td>
+<td>1</td>
+<td>6</td>
+<td>2</td>
+<td>3</td>
+<td>5</td>
+<td>7</td>
+<td>8</td>
+<td>9</td>
+<td>4</td>
+</tr>
+<tr>
+<td>0</td>
+<td class="clc">1</td>
+<td>6</td>
+<td>2</td>
+<td>4</td>
+<td>5</td>
+<td>3</td>
+<td>7</td>
+<td>8</td>
+<td>9</td>
+</tr>
+<tr>
+<td>1</td>
+<td>2</td>
+<td class="clc">3</td>
+<td>9</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>0</td>
+<td class="clc">8</td>
+<td>7</td>
+</tr>
+</tbody>
+</table>
+<h2>Задание 2</h4>
+<h4>Создание простого блога</h4>
+<p>На странице должны присутствовать:</p>
+<p>1. Форма добавления постов. В форме должно быть поле с заголовком и содержанием поста. По кнопке "Добавить" пост добавляется к списку.</p>
+<p>2. Список постов с заголовком и содержанием.</p>
+<p>3. Текстовый фильтр постов и сортировка по названию и времени добавления.</p>
+<p>Допускается использовать любые библиотеки или фреймворки.</p>
+<h5>Пример страницы:</h5>
+<div>
+    <hr/>
+    <div>
+        <h3>Новый пост</h3>
+        <form action="#">
+            <p>
+                <strong>
+                    <label for="text">Заголовок</label>
+                </strong>
+                <br/>
+                <input type="text" id="text" />
+            </p>
+            <p>
+                <strong>
+                    <label for="body">Содержание</label>
+                </strong>
+                <br/>
+                <input type="text" id="body" />
+            </p>
+            <p>
+                <button type="submit">Добавить</button>
+            </p>
+        </form>
+    </div>
+    <hr/>
+    <div>
+        <div style="width: 30%;float: left;">
+            <h3>Фильтр и сортировка</h3>
+            <p>
+                <strong>
+                    <label for="search">Поиск</label>
+                </strong>
+                <br/>
+                <input type="text" id="search" placeholder="найти..." />
+            </p>
+            <p>
+                <strong>
+                    <label for="sorting">Сортировка</label>
+                </strong>
+                <br/>
+                <select id="sorting">
+                    <option value="sort_name">Сортировать по заголовку</option>
+                    <option value="sort_created">Сортировать по времени добавления</option>
+                </select>
+            </p>
+        </div>
+        <div style="width: 70%;float: left;">
+            <div>
+                <h3>Заголовок 1</h3>
+                <p>Текст 1</p>
+                <div><small><i>11.05.2017 10:00</i></small></div>
+            </div>
+            <div>
+                <h3>Заголовок 2</h3>
+                <p>Текст 2</p>
+                <div><small><i>11.05.2017 10:00</i></small></div>
+            </div>
+        </div>
+    </div>
+    <div style="height:50px;width:100%;float:left;"></div>
+</div>
+</body>
+</html>

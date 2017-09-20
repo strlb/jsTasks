@@ -1,0 +1,145 @@
+﻿<html>
+<head>
+<title>Test unit</title>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css"> 
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script> 
+<script type="text/javascript">
+$(document).ready(function(){
+    var postsArr = [];
+    $('#addPost').click(function(){
+        var header = $('#headerInput').val();
+        var text = $('#textInput').val();
+        
+        Data = new Date();
+        Year = Data.getFullYear();
+        Month = Data.getMonth();
+        if(Month < 10){
+                Month = '0'+Month;
+        };
+        Day = Data.getDate();
+        if(Day < 10){
+            Day = '0'+Day;
+        };
+        Hour = Data.getHours();
+        Minutes = Data.getMinutes();
+        Seconds = Data.getSeconds();
+        dateN = Day+'-'+Month+'-'+Year+' '+Hour+':'+Minutes;
+
+        postsArr.push({head:header,title:text,date:dateN, id:postsArr.length});
+        buildPost(postsArr);
+    })
+
+    function buildPost(arr){
+        $('#posts').html('');
+        $.each(arr, function(index,value){
+        $('#posts').append('<div style="background-color:#f7de9c; margin:2px 0;"><h2>'+value.head+'</h2><p>'+value.title+'</p><em>'+value.date+'<em></div>');
+        })
+    }
+    $('#filterSelect').change(function() {
+        if($(this).val() == 1)
+            {
+                filterH(postsArr,'head');
+        }
+        if($(this).val() == 2)
+            {
+                filterH(postsArr,'id');
+        }
+    });
+    function filterH(arr,type){
+
+        var sortArr = [];
+
+        if(type == 'head'){
+            arr.forEach(function(item, i) {                
+                    sortArr.push(item.head);
+            });                
+        }
+        else if(type == 'id'){
+            arr.forEach(function(item, i) {                
+                    sortArr.push(item.id);
+            });    
+        }
+            
+        sortArr.sort();
+        console.log(sortArr)
+        var newPostArr =[];
+        for(i=0;i<sortArr.length;i++){
+            if(type == 'head'){
+                arr.forEach(function(item, ind) {
+                    if(item.head == sortArr[i]){
+                        newPostArr.push(item);
+                        return false;
+                    };
+                });
+            }
+            if(type == 'id'){
+                arr.forEach(function(item, ind) {
+                    if(Number(item.id) == sortArr[i]){
+                        newPostArr.push(item);
+                        return false;
+                    };
+                });
+            }
+            
+        };
+
+        buildPost(newPostArr);
+    };
+    $('#filterSearch').keyup(function(){
+      var searcVal = $('#filterSearch').val();
+      if(searcVal != ''){
+        SearcPost(postsArr,searcVal);
+      }
+    });
+    function SearcPost(arr,searchP){
+        var filterPostArr =[];
+        arr.forEach(function(iteam,index){
+            if(iteam.head.search(searchP)>=0){
+                filterPostArr.push(iteam);
+            }
+        })
+        if(filterPostArr.length>0){
+            buildPost(filterPostArr);
+        }
+        else{
+            $('#posts').html('No results');
+        }
+    }
+
+})
+</script>
+</head>
+<body>
+    <div class="row">
+        <div class="col-md-3 col-md-offset-4">
+            <h1>Новый пост</h1>
+            <label>Заголовок</label>
+            <input type="text" class="form-control" id="headerInput">
+            <label>Содержание</label>
+            <input type="text" class="form-control" id="textInput">
+            <p class="btn btn-default button" id="addPost">Добавить</p>
+        </div>
+    </div>
+    </hr>
+    <div class="row">    
+        <h2 style="text-align: center">Фильтр и сортировка</h2>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <input type="text" class="form-control" id="filterSearch" placeholder="Поиск">
+        </div>
+        <div class="col-md-6">
+              <select class="form-control" id="filterSelect">
+                <option id="filterHeader" value="0"></option>
+                <option id="filterHeader" value="1">Сортировать по заголовку</option>
+                <option id="filterText" value="2">Сортировать по времени добавления</option>
+              </select>
+        </div>
+    </div>
+    </hr>
+    <div id="posts">
+    </div>
+</body>
+</html>

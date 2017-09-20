@@ -1,1 +1,1 @@
-# jsTasks
+В файле test.html описаны frontend задачки, а в файлах test1.html и test2.html соответственно реализация их решения.

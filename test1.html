@@ -1,0 +1,159 @@
+﻿<html>
+<head>
+<title>Test unit</title>
+<script type="text/javascript">
+//=======First Task
+    function leftCalc(){
+        count = 0;
+        var allTr = document.querySelectorAll("tr");
+        for (var i = 0; i < allTr.length; i++) {
+            var allTd = allTr[i].querySelectorAll("td");
+            count = count + Number(allTd[i].innerHTML);
+        }
+        document.getElementById('calcRes1').innerHTML = '<p>Результат: '+count+'</p>';
+        document.getElementById('calc1').disabled = true;
+    };    
+    function CalcById(){
+        count = 0;
+        var calcClass = document.querySelectorAll(".clc");
+        for (var i = 0; i < calcClass.length; i++) {
+            count = count + Number(calcClass[i].innerHTML);
+        }
+        document.getElementById('calcRes2').innerHTML = '<p>Результат: '+count+'</p>';
+        document.getElementById('calc2').disabled = true;
+    }
+</script>
+</head>
+<body>
+<h2>Задание 1</h4>
+<h4>На javascript (без использования каких-либо сторонних библиотек) сделать подсчёт в ячейках по заданным параметрам по клику на кнопке, результат вывести в блок.<br>После подсчёта кнопка должна стать недоступной.</h4>
+<p>Сумма в таблице с id &quot;test3&quot; ячейках по диагонали от первой слева: <span id="sum1">-</span></p>
+<p><button id="calc1" onclick="leftCalc()">Посчитать</button></p><div id='calcRes1'></div>
+<p>Сумма в ячейках с id &quot;test3&quot; с классом &quot;clc&quot;: <span id="sum2">-</span></p>
+<p><button id="calc2" onclick="CalcById()">Посчитать</button></p><div id='calcRes2'></div>
+<table id="test3" cellpadding="5" cellspacing="0" border="1">
+<tbody>
+<tr>
+<td>0</td>
+<td>2</td>
+<td>3</td>
+<td class="clc">9</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>1</td>
+<td>7</td>
+<td class="clc">8</td>
+</tr>
+<tr>
+<td>4</td>
+<td>6</td>
+<td class="clc">1</td>
+<td>0</td>
+<td>2</td>
+<td class="clc">3</td>
+<td>8</td>
+<td>5</td>
+<td>9</td>
+<td>7</td>
+</tr>
+<tr>
+<td>3</td>
+<td>0</td>
+<td>2</td>
+<td>4</td>
+<td>9</td>
+<td>5</td>
+<td>6</td>
+<td class="clc">7</td>
+<td>8</td>
+<td>1</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td class="clc">6</td>
+<td>7</td>
+<td>8</td>
+<td>9</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td class="clc">2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>7</td>
+<td>8</td>
+<td>9</td>
+</tr>
+<tr>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>0</td>
+<td class="clc">4</td>
+<td>6</td>
+<td>7</td>
+<td>5</td>
+<td>8</td>
+<td>9</td>
+</tr>
+<tr>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>0</td>
+<td>6</td>
+<td class="clc">7</td>
+<td>8</td>
+<td>9</td>
+</tr>
+<tr>
+<td class="clc">0</td>
+<td>1</td>
+<td>6</td>
+<td>2</td>
+<td>3</td>
+<td>5</td>
+<td>7</td>
+<td>8</td>
+<td>9</td>
+<td>4</td>
+</tr>
+<tr>
+<td>0</td>
+<td class="clc">1</td>
+<td>6</td>
+<td>2</td>
+<td>4</td>
+<td>5</td>
+<td>3</td>
+<td>7</td>
+<td>8</td>
+<td>9</td>
+</tr>
+<tr>
+<td>1</td>
+<td>2</td>
+<td class="clc">3</td>
+<td>9</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>0</td>
+<td class="clc">8</td>
+<td>7</td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>
